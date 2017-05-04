@@ -42,7 +42,7 @@
 				<tr>
 					<td>
 						<?php if($svc->max_qty==1): ?>
-						<input value="1" name="qty_<?php echo $svc->id_layanan ?>" <?php if(!in_array($svc->id_layanan,$uploaded)) {echo 'disabled';} ?> type="checkbox" id="qty_<?php echo $svc->id_layanan ?>" class="form-control"/>
+						<input value="1" name="qty_<?php echo $svc->id_layanan ?>" type="checkbox" id="qty_<?php echo $svc->id_layanan ?>" class="form-control"/>
 						<?php else: ?>
 						<input value="0" name="qty_<?php echo $svc->id_layanan ?>" <?php if(!in_array($svc->id_layanan,$uploaded)) {echo 'disabled';} ?> type="text" id="qty_<?php echo $svc->id_layanan ?>" class="form-control price"/>
 						<?php endif; ?>

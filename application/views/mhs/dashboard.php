@@ -1,4 +1,4 @@
-    <div class="container">      
+	    <div class="container">      
       	<div class="row">&nbsp;</div>
       	<div class="row">
 		  	<div class="col-sm-4">
@@ -72,9 +72,9 @@
 						<?php endif;
 						if($p->status >=1): ?>
 						<br /><br />
-						<form action="<?= base_url('mhs/dashboard/bukti_permohonan/')?>" method="post">
+						<form action="<?= base_url('mhs/dashboard/bukti_pembayaran/')?>" method="post">
 						<input type="hidden" name="aidi" value="<?= $p->id_pengajuan?>" />
-						<button class="btn btn-success">Bukti permohonan</a>
+						<button class="btn btn-success">Bukti Pembayaran</a>
 						</form>
 						 <?php endif; ?>
 						</td>						

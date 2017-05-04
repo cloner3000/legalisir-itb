@@ -12,6 +12,14 @@ class Dashboard extends MY_Controller {
 	}
 	public function index()
 	{
+		//Custom query rizaldi
+		$this->db->where('nim = '. $this->session->userdata('logged_as')['nim']);
+		$dataq = $this->db->get('mahasiswa')->result();
+		
+		if (!$dataq[0]->email) {
+			$this->load->view('confirm_email');
+		} else {
+		//end 
 		$data['pengajuan'] = $this->pengajuan->getData(array('nim'=>$this->session->userdata('logged_as')['nim']),array('waktu_pengajuan'=>'desc'));
 		foreach($data['pengajuan']->result() as $pengajuan)
 		{
@@ -21,8 +29,9 @@ class Dashboard extends MY_Controller {
 			endforeach;			
 		}
 		$this->show_view('mhs/dashboard',$data);
+		}
 	}
-	public function bukti_permohonan() {
+	public function bukti_pembayaran() {
 		$id = $this->input->post("aidi");
 		if(!$id) {
 			echo '<div style="font-family:Helvetica;font-size:250px;text-align:center;">YOU CANT SEE ME</h1>';
@@ -33,6 +42,14 @@ class Dashboard extends MY_Controller {
 			$data['data_detail'] = $this->db->get('pengajuan_detail')->result();
 			$this->load->view('inv',$data);
 		}
+	}
+	public function okeoce() {
+		$nim = $this->session->userdata('logged_as')['nim'];
+		$data['email'] = $this->input->post("email");
+
+		$this->db->where("nim = ".$nim);
+		$this->db->update("mahasiswa",$data);
+		redirect('mhs/dashboard','refresh');
 	}
 }
 

@@ -47,7 +47,7 @@ class Pembayaran extends MY_Controller {
 			$data['biaya_total']	=	$this->pengajuan_detail->getTotalTagihan($pengajuan->id_pengajuan);
 			$this->pembayaran->save($data);	
 		}
-		//redirect('adm/pembayaran/index','refresh');
+		redirect('adm/pembayaran/index','refresh');
 //email
 			$this->db->where('nim = '. $nim);
 			$getemail = $this->db->get('mahasiswa')->result();

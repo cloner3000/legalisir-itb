@@ -1,14 +1,17 @@
-<?php if ($this->uri->segment(3) == "BUKTI PEMBAYARAN") {
+<?php if ($this->uri->segment(3) == "bukti_pembayaran") {
   $title = 'BUKTI PEMBAYARAN';
   $ket = 'Pengambilan dilakukan di loket SITH pada jam kerja dengan membawa bukti pengajuan yang telah selesai pembayarannya.';
   $hidden = '';
-  $d = explode(" ",$data[0]->waktu_pengajuan);
-  $date =  $d[0]; 
+  
+  $date =  $data[0]->waktu_pengajuan;
+  
+  $date2 = $data[0]->waktu_bayar;
   } else {
     $title =  'BUKTI PERMOHONAN';
     $ket ='Jika anda telah melakukan pembayaran, anda akan menerima email bahwa anda telah melakukan pembayaran, bila anda sudah melakukan pembayaran namun status belum berubah silahkan datang ke loket dengan membawa tanda bukti pembayaran';
     $hidden = 'style="opacity:0;"';
     $date = $data[0]->waktu_pengajuan;
+    $date2 = "-";
     } ?>
 <table style="font-family:Helvetica;color:black;" border="0" cellspacing="2" cellpadding="0" width="100%">
 <thead>
@@ -18,7 +21,7 @@
     </td>
   </tr>
   <tr>
-    <td colspan="2" width="50%" style="padding-bottom:40px;padding-top:40px;padding-left:20px;font-size:13px;"><b>ALIS - SITH ITB</b> <br> Labtek 11 Jalan Ganesha No. 10 Bandung</td>
+    <td colspan="2" width="50%" style="padding-bottom:40px;padding-top:40px;padding-left:20px;font-size:13px;"><b>ALIS - SITH ITB</b> <br>Aplikasi Legalisir SITH ITB <br>http://legalisir.sith.itb.ac.id<br> Labtek XI Jalan Ganesha No. 10 Bandung</td>
     <td colspan="2"style="text-align:right;"><img src="http://4.bp.blogspot.com/-h9BBTDq9Jg4/VNYRILbuNRI/AAAAAAAAB-8/0fE95XJOZmQ/s1600/logo-itb-hitam-putih.jpg" width="80px" style="padding-right:20px"; /></td>
   </tr>
   <tr>
@@ -32,10 +35,11 @@
   </tr>
   <tr style="font-size:75%;">
   <td style="background-color:#dddddd;border-radius:0.25em;border:1px solid #a1a1a1;padding:3px 0px 3px 10px;">
-        Tanggal    
+        Tanggal Pengajuan <br> Tanggal Pembayaran
   	</td>
     <td style="border-radius:0.25em;border:1px solid #a1a1a1;padding:3px 0px 3px 10px;">
       <?= $date ?>
+      <br> <?= $date2 ?>
     </td>
   </tr>
 </thead>

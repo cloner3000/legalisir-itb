@@ -36,8 +36,9 @@ class Dashboard extends MY_Controller {
 		if(!$id) {
 			echo '<div style="font-family:Helvetica;font-size:250px;text-align:center;">YOU CANT SEE ME</h1>';
 		} else {
-			$this->db->where('id_pengajuan =' . $id);
+			$this->db->where('pengajuan.id_pengajuan =' . $id);
 			$this->db->join("mahasiswa", "pengajuan.nim = mahasiswa.nim");
+			$this->db->join("pembayaran", "pengajuan.id_pengajuan = pembayaran.id_pengajuan");
 			$data['data'] = $this->db->get('pengajuan')->result();
 			$this->db->where('id_pengajuan =' . $id);
 			$data['data_detail'] = $this->db->get('pengajuan_detail')->result();
@@ -50,8 +51,9 @@ class Dashboard extends MY_Controller {
 		if(!$id) {
 			echo '<div style="font-family:Helvetica;font-size:250px;text-align:center;">YOU CANT SEE ME</h1>';
 		} else {
-			$this->db->where('id_pengajuan =' . $id);
+			$this->db->where('pengajuan.id_pengajuan =' . $id);
 			$this->db->join("mahasiswa", "pengajuan.nim = mahasiswa.nim");
+			
 			$data['data'] = $this->db->get('pengajuan')->result();
 			$this->db->where('id_pengajuan =' . $id);
 			$data['data_detail'] = $this->db->get('pengajuan_detail')->result();

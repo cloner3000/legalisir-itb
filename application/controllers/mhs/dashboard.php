@@ -37,12 +37,29 @@ class Dashboard extends MY_Controller {
 			echo '<div style="font-family:Helvetica;font-size:250px;text-align:center;">YOU CANT SEE ME</h1>';
 		} else {
 			$this->db->where('id_pengajuan =' . $id);
+			$this->db->join("mahasiswa", "pengajuan.nim = mahasiswa.nim");
 			$data['data'] = $this->db->get('pengajuan')->result();
 			$this->db->where('id_pengajuan =' . $id);
 			$data['data_detail'] = $this->db->get('pengajuan_detail')->result();
 			$this->load->view('inv',$data);
 		}
 	}
+
+	public function bukti_permohonan() {
+		$id = $this->input->post("aidi");
+		if(!$id) {
+			echo '<div style="font-family:Helvetica;font-size:250px;text-align:center;">YOU CANT SEE ME</h1>';
+		} else {
+			$this->db->where('id_pengajuan =' . $id);
+			$this->db->join("mahasiswa", "pengajuan.nim = mahasiswa.nim");
+			$data['data'] = $this->db->get('pengajuan')->result();
+			$this->db->where('id_pengajuan =' . $id);
+			$data['data_detail'] = $this->db->get('pengajuan_detail')->result();
+			$this->load->view('inv',$data);
+		}
+	}
+
+
 	public function okeoce() {
 		$nim = $this->session->userdata('logged_as')['nim'];
 		$data['email'] = $this->input->post("email");

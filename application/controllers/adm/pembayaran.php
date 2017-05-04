@@ -57,6 +57,7 @@ class Pembayaran extends MY_Controller {
 			$this->email->subject('[Legalisir - SITH] Konfirmasi Pembayaran');
 
 			$this->db->where('id_pengajuan =' . $id_pengajuan);
+			$this->db->join("mahasiswa", "pengajuan.nim = mahasiswa.nim");
 			$data = $this->db->get('pengajuan')->result();
 			$this->db->where('id_pengajuan =' . $id_pengajuan);
 			$data_detail = $this->db->get('pengajuan_detail')->result();
@@ -72,7 +73,7 @@ class Pembayaran extends MY_Controller {
     <td colspan="2"style="text-align:right;"><img src="http://4.bp.blogspot.com/-h9BBTDq9Jg4/VNYRILbuNRI/AAAAAAAAB-8/0fE95XJOZmQ/s1600/logo-itb-hitam-putih.jpg" width="80px" style="padding-right:20px"; /></td>
   </tr>
   <tr>
-    <td rowspan="2" colspan="2"width="50%" style="padding-bottom:20px;font-weight:bold; font-size:20px;padding-left:20px;padding-top:20px;">'. $data[0]->nama .'<br>' . $data[0]->nim .'</td>
+    <td rowspan="2" colspan="2"width="50%" style="padding-bottom:20px;font-weight:bold; font-size:20px;padding-left:20px;padding-top:20px;">'. $data[0]->nama . ' - ' . $data[0]->email .'<br>' . $data[0]->nim .'</td>
     <td><div style="padding:15px;"></div><!-- Blank Space --></td>
     <td><!-- Blank Space --></td>
   </tr>

@@ -1,23 +1,41 @@
+<?php if ($this->uri->segment(3) == "BUKTI PEMBAYARAN") {
+  $title = 'BUKTI PEMBAYARAN';
+  $ket = 'Pengambilan dilakukan di loket SITH pada jam kerja dengan membawa bukti pengajuan yang telah selesai pembayarannya.';
+  $hidden = '';
+  $d = explode(" ",$data[0]->waktu_pengajuan);
+  $date =  $d[0]; 
+  } else {
+    $title =  'BUKTI PERMOHONAN';
+    $ket ='Jika anda telah melakukan pembayaran, anda akan menerima email bahwa anda telah melakukan pembayaran, bila anda sudah melakukan pembayaran namun status belum berubah silahkan datang ke loket dengan membawa tanda bukti pembayaran';
+    $hidden = 'style="opacity:0;"';
+    $date = $data[0]->waktu_pengajuan;
+    } ?>
 <table style="font-family:Helvetica;color:black;" border="0" cellspacing="2" cellpadding="0" width="100%">
 <thead>
   <tr>
-    <td colspan="4" style="padding:10px;text-align:center;font-weight:bold;color:white;background-color:black;border-radius:5px;">BUKTI PEMBAYARAN</td>
+    <td colspan="4" style="padding:10px;text-align:center;font-weight:bold;color:white;background-color:black;border-radius:5px;">
+    <?= $title ?>
+    </td>
   </tr>
   <tr>
-    <td colspan="2" width="50%" style="padding-bottom:40px;padding-top:40px;padding-left:20px;font-size:13px;"><?= $data[0]->prodi?><br>SITH ITB</td>
+    <td colspan="2" width="50%" style="padding-bottom:40px;padding-top:40px;padding-left:20px;font-size:13px;"><b>ALIS - SITH ITB</b> <br> Labtek 11 Jalan Ganesha No. 10 Bandung</td>
     <td colspan="2"style="text-align:right;"><img src="http://4.bp.blogspot.com/-h9BBTDq9Jg4/VNYRILbuNRI/AAAAAAAAB-8/0fE95XJOZmQ/s1600/logo-itb-hitam-putih.jpg" width="80px" style="padding-right:20px"; /></td>
   </tr>
   <tr>
-    <td rowspan="2" colspan="2"width="50%" style="padding-bottom:20px;font-weight:bold; font-size:20px;padding-left:20px;padding-top:20px;"><?= $data[0]->nama ."<br>" . $data[0]->nim?></td>
-    <td><div style="padding:15px;"></div><!-- Blank Space --></td>
-    <td><!-- Blank Space --></td>
+    <td rowspan="2" colspan="2"width="50%" style="padding-bottom:20px;font-weight:bold; font-size:20px;padding-left:20px;padding-top:20px;"><?= $data[0]->nama . " - " . $data[0]->email ."<br>" . $data[0]->nim?></td>
+    <td style="background-color:#dddddd;border-radius:0.25em;border:1px solid #a1a1a1;padding:3px 0px 3px 10px;">
+        No 
+    </td>
+    <td style="border-radius:0.25em;border:1px solid #a1a1a1;padding:3px 0px 3px 10px;">
+      <?= $data[0]->id_pengajuan . '/ALIS.SITH/2017' ?>
+    </td>
   </tr>
   <tr style="font-size:75%;">
   <td style="background-color:#dddddd;border-radius:0.25em;border:1px solid #a1a1a1;padding:3px 0px 3px 10px;">
         Tanggal    
   	</td>
     <td style="border-radius:0.25em;border:1px solid #a1a1a1;padding:3px 0px 3px 10px;">
-      <?php $d = explode(" ",$data[0]->waktu_pengajuan);echo $d[0]; ?>
+      <?= $date ?>
     </td>
   </tr>
 </thead>
@@ -49,7 +67,7 @@
       Rp . <?= $this->tools->angka($data[0]->total_tagihan)?>
     </td>
   </tr>
-  <tr>
+  <tr <?= $hidden ?>>
     <td colspan="2"width="50%"> </td>
     <td style="padding:3px 0px 3px 10px;background-color:#dddddd;font-size:75%;border-radius:0.25em;border:1px solid #a1a1a1;" >
         Dibayar
@@ -61,7 +79,7 @@
   <tr>
     <td colspan="4" style=";padding:30px 5px 0px 6px;">
       <center>KETERANGAN</center><hr/>
-      <p>Pengambilan dilakukan di loket SITH pada jam kerja dengan membawa bukti pengajuan yang telah selesai pembayarannya.</p>
+      <p><?= $ket ?></p>
     </td>
   </tr>
 </tbody>

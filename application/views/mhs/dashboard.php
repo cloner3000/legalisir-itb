@@ -65,18 +65,23 @@
 							case 4: echo '<span class="label label-success">4. Sudah diambil</span>';break;
 						} 
 						echo '<br />';
-						if($p->status >=2):
+						
 						?>
 						<br />
-						<!-- <a href="" class="btn btn-success">Bukti pembayaran</a> -->
-						<?php endif;
-						if($p->status >=1): ?>
-						<br /><br />
+						<form action="<?= base_url('mhs/dashboard/bukti_permohonan/')?>" method="post">
+						<input type="hidden" name="aidi" value="<?= $p->id_pengajuan?>" />
+						<button class="btn btn-info">Bukti Permohonan</button>
+						</form>
+						
+						<br>
+						<?php if (!($p->status == 1))  { ?>
+						
 						<form action="<?= base_url('mhs/dashboard/bukti_pembayaran/')?>" method="post">
 						<input type="hidden" name="aidi" value="<?= $p->id_pengajuan?>" />
-						<button class="btn btn-success">Bukti Pembayaran</a>
+						<button class="btn btn-success">Bukti Pembayaran</button>
 						</form>
-						 <?php endif; ?>
+						 <?php } ?>
+
 						</td>						
 					</tr>
 					<?php endforeach; ?>

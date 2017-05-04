@@ -27,6 +27,10 @@
 					<td colspan="3"><?php echo $this->session->userdata('logged_as')['prodi']?></td>
 				</tr>	
 			</table>
+			<div class="alert alert-info col-sm-offset-1">
+				<p>Bila layanan tidak bisa di gunakan berarti dokumen anda belum terupload di sistem, silahkan hubungi akademik untuk info lebih lanjut</p>
+			</div>
+
 			<table class="table table-striped col-sm-offset-1">
 				<tr>					
 					<th class="col-sm-1">Qty</th>
@@ -38,11 +42,10 @@
 				<tr>
 					<td>
 						<?php if($svc->max_qty==1): ?>
-						<input value="1" name="qty_<?php echo $svc->id_layanan ?>" type="checkbox" id="qty_<?php echo $svc->id_layanan ?>" class="form-control"/>
+						<input value="1" name="qty_<?php echo $svc->id_layanan ?>" <?php if(!in_array($svc->id_layanan,$uploaded)) {echo 'disabled';} ?> type="checkbox" id="qty_<?php echo $svc->id_layanan ?>" class="form-control"/>
 						<?php else: ?>
-						<input value="0" dir="rtl" name="qty_<?php echo $svc->id_layanan ?>" type="text" id="qty_<?php echo $svc->id_layanan ?>" class="form-control price"/>
+						<input value="0" name="qty_<?php echo $svc->id_layanan ?>" <?php if(!in_array($svc->id_layanan,$uploaded)) {echo 'disabled';} ?> type="text" id="qty_<?php echo $svc->id_layanan ?>" class="form-control price"/>
 						<?php endif; ?>
-						
 					</td>
 					<td><?php echo $svc->nama_layanan ?></td>
 					<td class="tright"><?php echo $this->tools->uang($svc->biaya) ?></td>

@@ -1,4 +1,4 @@
-	<div class="navbar navbar-legalisir navbar-fixed-top" role="navigation">
+	<div class="navbar navbar-legalisir navbar-fixed-top" role="navigation" >
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -41,7 +41,7 @@
                 <li><a href="<?php echo base_url('adm/laporan_registrasi') ?>">Registrasi</a></li>                
 				<li><a href="<?php echo base_url('adm/laporan_pengajuan') ?>">Pengajuan</a></li>
 				<li><a href="<?php echo base_url('adm/laporan_pembayaran') ?>">Pembayaran</a></li>
-				<li><a href="<?php echo base_url('adm/laporan_pengambilan') ?>">Pengambilan</a></li>
+				<!-- <li><a href="<?php echo base_url('adm/laporan_pengambilan') ?>">Pengambilan</a></li> -->
         <?php $a = 1; if(!$a): ?>
 				<li><a href="<?php echo base_url('adm/laporan_tracer_study') ?>">Tracer study</a></li>
       <?php endif;?>

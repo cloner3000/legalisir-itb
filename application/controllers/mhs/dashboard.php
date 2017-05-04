@@ -8,6 +8,7 @@ class Dashboard extends MY_Controller {
 		$this->load->model('m_mahasiswa','mahasiswa');
 		$this->load->model('m_pengajuan','pengajuan');
 		$this->load->model('m_pengajuan_detail','pengajuan_detail');
+		$this->load->model('m_mailer','mailer');
 	}
 	public function index()
 	{
@@ -20,6 +21,18 @@ class Dashboard extends MY_Controller {
 			endforeach;			
 		}
 		$this->show_view('mhs/dashboard',$data);
+	}
+	public function bukti_permohonan() {
+		$id = $this->input->post("aidi");
+		if(!$id) {
+			echo '<div style="font-family:Helvetica;font-size:250px;text-align:center;">YOU CANT SEE ME</h1>';
+		} else {
+			$this->db->where('id_pengajuan =' . $id);
+			$data['data'] = $this->db->get('pengajuan')->result();
+			$this->db->where('id_pengajuan =' . $id);
+			$data['data_detail'] = $this->db->get('pengajuan_detail')->result();
+			$this->load->view('inv',$data);
+		}
 	}
 }
 

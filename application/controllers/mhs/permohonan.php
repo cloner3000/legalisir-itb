@@ -8,6 +8,7 @@ class Permohonan extends MY_Controller {
 		$this->load->model('m_layanan','layanan');
 		$this->load->model('m_pengajuan','pengajuan');
 		$this->load->model('m_pengajuan_detail','pengajuan_detail');
+		$this->load->model('m_mahasiswa_dokumen','mahasiswa_dokumen');
 	}
 	
 	public function confirm()
@@ -81,6 +82,14 @@ class Permohonan extends MY_Controller {
 	public function index()
 	{
 		$data['layanan'] = $this->layanan->getLayanan();
+		$noijazah = $this->session->userdata('logged_as')['no_ijazah'];
+		$res = $this->mahasiswa_dokumen->getData(array('no_ijazah'=>$noijazah));
+		$up = array();
+		foreach($res->result() as $doc){
+				$up[] = $doc->id_layanan;
+			}			
+		$data['uploaded'] = $up;			
+
 		$data['customJs'] = '
 			function numberWithCommas(x) {
 			  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -98,11 +107,12 @@ class Permohonan extends MY_Controller {
 							$(\'#t_'.$layanan->id_layanan.'\').val(numberWithCommas('.$layanan->biaya.')); // show total;	  
 						}else{
 							$(\'#t_'.$layanan->id_layanan.'\').val(numberWithCommas(0)); // show total
-						}              
+						}            
             	});';
 			else:
 			$data['customJs'] .= '
 					$(\'#qty_'.$layanan->id_layanan.'\').on(\'keyup\', function(e) {  
+					
 	                var quan = $("#qty_'.$layanan->id_layanan.'").val() != "" ? parseFloat($("#qty_'.$layanan->id_layanan.'").val()) : 1,  //  Get quantity value
 	                    pric = '.$layanan->biaya.';
 	                $(\'#t_'.$layanan->id_layanan.'\').val(numberWithCommas(pric*quan)); // show total
@@ -111,12 +121,12 @@ class Permohonan extends MY_Controller {
 		}
 		$data['customJs'] .= '
 				$("input[name^=qty_]").keyup(function() {
-				    var sum = 0;
-				    $("input[name^=price_]").each(function() {
-				        var number = parseInt(removeComma(this.value)) || 0;
-				        sum += number;
-				    });
-				    $("#total").val(numberWithCommas(sum));
+					    var sum = 0;
+					    $("input[name^=price_]").each(function() {
+					        var number = parseInt(removeComma(this.value)) || 0;
+					        sum += number;
+					    });
+					    $("#total").val(numberWithCommas(sum));
 				});
 				$("input[name^=qty_]").click(function() {
 				    var sum = 0;

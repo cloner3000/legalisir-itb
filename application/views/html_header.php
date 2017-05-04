@@ -20,7 +20,7 @@
 	<?php echo $customCss ?>	
 	</style>
 	<?php endif; ?>
-	<title><?php echo isset($pageTitle)?$pageTitle.' - ':'' ?>   Legalisir Ijazah FTSL ITB</title>	
+	<title><?php echo isset($pageTitle)?$pageTitle.' - ':'' ?>   Legalisir Ijazah SITH ITB</title>	
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>

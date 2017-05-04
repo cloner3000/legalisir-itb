@@ -68,11 +68,14 @@
 						if($p->status >=2):
 						?>
 						<br />
-						<a href="" class="btn btn-success">Bukti pembayaran</a>
+						<!-- <a href="" class="btn btn-success">Bukti pembayaran</a> -->
 						<?php endif;
 						if($p->status >=1): ?>
 						<br /><br />
-						<a href="" class="btn btn-success">Bukti permohonan</a>
+						<form action="<?= base_url('mhs/dashboard/bukti_permohonan/')?>" method="post">
+						<input type="hidden" name="aidi" value="<?= $p->id_pengajuan?>" />
+						<button class="btn btn-success">Bukti permohonan</a>
+						</form>
 						 <?php endif; ?>
 						</td>						
 					</tr>

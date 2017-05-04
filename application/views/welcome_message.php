@@ -1,49 +1,88 @@
-	<div class="jumbotron"  style="background-image: url(<?php echo base_url('images/ilustrasi.jpg')?>);background-repeat: no-repeat; background-position: right;">
-      <div class="container" style="background-color:rgba(239,239,239,0.5);">
-        <h2>Aplikasi Legalisir Ijazah SITH (ALIS)</h2>
-        <p>Sekarang anda bisa mengajukan legalisir ijazah SITH-ITB via web ini. <br />Web ini dapat dibuka melalui perangkat mobile.</p>        
+<div class="wrapper container">
+<div class="parallax parallax_a">
+    <h2>Aplikasi Legalisir Ijazah SITH (ALIS)</h2>
+    <p>Sekarang anda bisa mengajukan legalisir ijazah SITH-ITB via web ini. 
+Web ini dapat dibuka melalui perangkat mobile.</p>
+    
+</div>
+<!-- Service Section
+    ================================================== -->
+<div class="services" id="services" >
+
+  <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="service_tiem">
+          <div class="sicon"><i class="fa fa-sign-in"></i></div>
+          <h2>REGISTRASI / LOGIN</h2>
+          <p>Untuk akses lakukan login menggunakan NIM dan password, jika belum memiliki akun silahkan lakukan registrasi.</p>
+           </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="service_tiem">
+          <div class="sicon"><i class="fa fa-paper-plane"></i></div>
+          <h2>PENGAJUAN</h2>
+          <p>Anda dapat melakukan pengajuan legalisir ijazah setelah melalui formulir pengajuan. Untuk saat ini, legalisir tidak dibatasi jumlah nya.</p>
+           </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="service_tiem">
+          <div class="sicon"><i class="fa fa-usd"></i></div>
+          <h2>BAYAR KE LOKET</h2>
+          <p>Selanjutnya, lakukan pembayaran secara tunai ke loket SITH, sesuai jumlah yang harus dibayarkan dengan membawa bukti pengajuan.</p>
+           </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="service_tiem">
+          <div class="sicon"><i class="fa fa-file"></i></div>
+          <h2>AMBIL IJAZAH</h2>
+          <p>Anda akan diberi pemberitahuan lewat email,lalu mengambilnya di loket SITH pada jam kerja dengan membawa bukti pengajuan.</p>
+           </div>
       </div>
     </div>
+  
 
-    <div class="container" style="padding-top:0px;margin-top:0px">
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-md-3">
-          <h2>1. Registrasi/ Login</h2>
-          <p style="text-align: justify">
-		  	Silahkan lakukan <a href="<?php echo base_url('registrasi')?>">registrasi</a> terlebih dahulu jika belum pernah mengakses aplikasi ini atau aplikasi repositori.
-			Jika sudah melakukan registrasi, atau pernah login di situs repositori, lakukan login menggunakan NIM dan password anda.
-		  </p>          
+    <div class="head_section">
+        <h2>NIM TERVERIFIKASI</h2>
+        <p>NIM BERIKUT SUDAH DAPAT LOGIN DAN MEGAJUKAN LEGALISIR</p>
+        
+        <div class="col-md-10 col-md-offset-1 ">
+        <table class="table table-responsive" id="tabel_verified">
+        <thead>
+            <tr>
+              <th class="text-center">NIM</th>
+              <th class="text-center">Nama</th>
+              <th class="text-center">Prodi</th>
+            </tr>
+        </thead>
+        <tbody>
+        
+        <?php foreach($verified->result() as $mhs): ?>
+          <tr>
+            <td><?= $mhs->nim?></td>
+            <td><?= $mhs->nama?></td>
+            <td><?= $mhs->prodi?></td> 
+          </tr>
+        <?php endforeach; ?>
+        </tbody>
+        </table>
+
         </div>
-        <div class="col-md-3">
-          <h2>2. Pengajuan</h2>
-          <p style="text-align: justify">Anda dapat melakukan pengajuan legalisir ijazah setelah melengkapi form-tracer-studi. Untuk saat ini, legalisir tidak dibatasi jumlah nya. 
-		  </p>          
-        </div>
-        <div class="col-md-3">
-          <h2>3. Bayar ke loket</h2>
-          <p style="text-align: justify">Selanjutnya, lakukan pembayaran secara tunai ke loket SITH, sesuai jumlah yang harus dibayarkan dengan membawa bukti pengajuan.</p>          
-       </div>
-        <div class="col-md-3">
-          <h2>4. Ambil ijazah</h2>
-          <p style="text-align: justify">Anda akan menerima notifikasi via web ini dan email jika permohonan legalisir anda telah siap untuk diambil. Pengambilan dilakukan di loket SITH pada jam kerja dengan membawa bukti pengajuan yang telah selesai pembayarannya.</p>          
-        </div>
+    </div>
+</div>
+
+<!-- FOOTER Section
+    ================================================== -->
+<div class="footer">
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="mborder"></div>
       </div>
-	  <div class="row" style="height:100%;">
-	  	<div class="col-md-12" style="background-color: #efefef;padding:10px 20px 3px 20px;">
-			<h4 style="padding:0px;margin:0px">Berikut ini NIM yang telah diverifikasi</h4>
-			Nim berikut sudah dapat login dan mengajukan legalisir. Anda dapat menggunakan pencarian pada browser (Ctrl+F) untuk mencari NIM anda.
-			
-			<br />
-			<div class="col-md-12" style="margin-bottom:10px; overflow:auto;height: 100%;padding:15px;">
-				<ol>
-					<?php if($verified->num_rows()>0): $i=0;?>
-					<?php foreach($verified->result() as $mhs): ?>
-						<li class="<?php echo $i%2!=0?'odd':'even'?>"><span class="col-md-2"><?php echo $mhs->nim?></span> <span class="col-md-4"><?php echo $mhs->nama?></span> <span class="col-md-2"><?php echo $mhs->prodi?></span> </span></li>
-					<?php $i++;endforeach; ?>
-					<?php endif; ?>
-				</ol>
-			</div>
-		</div>
-	  </div>
-	 </div>
+      <div class="col-xs-6">
+        <div class="qborder"></div>
+      </div>
+    </div>
+    
+    
+</div>
+<!-- / contact Close --> 
+</div>

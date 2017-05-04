@@ -45,8 +45,12 @@ body {
   border-top: 1px solid #19476F;
 }
 .navbar-legalisir {
-    background-color: #003366;
-    border-color: #000033;
+    background-color: #4ec3cd;
+    border-color: ;
+}
+.biru {
+  background-color: #4ec3cd;
+  color:white;
 }
 .navbar-legalisir .navbar-brand {
     color: #EFEFEF;
@@ -66,13 +70,13 @@ body {
 .navbar-legalisir .navbar-nav > .active > a:hover, 
 .navbar-legalisir .navbar-nav > .active > a:focus {
     color: #FFFFFF;
-    background-color: #000033;
+    background-color: #aeecf2;
 }
 .navbar-legalisir .navbar-nav > .open > a, 
 .navbar-legalisir .navbar-nav > .open > a:hover, 
 .navbar-legalisir .navbar-nav > .open > a:focus {
     color: #FFFFFF;
-    background-color: #000033;
+    background-color: #aeecf2;
 }
 .navbar-legalisir .navbar-nav > .dropdown > a .caret {
     border-top-color: #EFEFEF;
@@ -90,11 +94,11 @@ body {
     border-bottom-color: #FFFFFF;
 }
 .navbar-legalisir .navbar-toggle {
-    border-color: #000033;
+    border-color: #aeecf2;
 }
 .navbar-legalisir .navbar-toggle:hover,
 .navbar-legalisir .navbar-toggle:focus {
-    background-color: #000033;
+    background-color: #aeecf2;
 }
 .navbar-legalisir .navbar-toggle .icon-bar {
     background-color: #EFEFEF;
@@ -110,5 +114,5 @@ body {
 }
 .nav > li > a:hover, .nav > li > a:focus
 {
-  background-color: #000066;
+  background-color: #aeecf2;
 }
